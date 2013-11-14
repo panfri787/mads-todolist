@@ -1,0 +1,21 @@
+@(id: Long, taskForm: Form[Task], userEmail: String)
+
+@import helper._
+
+@main("Edit Task"){
+	<h1>Edit task </h1>
+	<h2>Hello, @userEmail</h2>
+
+	@form(routes.Application.updateTask(id)){
+
+		@inputText(taskForm("label"), '_label -> "label")
+
+		@inputText(taskForm("endDate"), '_label -> "Date of end")
+
+		<input type="hidden" name="user" value="@userEmail">
+
+		<input type="submit" value="Save">
+	}
+	<a href="@routes.Application.tasks(Application.order)"> <button>Cancel</button> </a>
+	<footer>Created by: Pablo Verdú Romero.</footer>
+}

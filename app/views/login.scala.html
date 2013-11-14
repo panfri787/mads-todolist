@@ -1,0 +1,18 @@
+@(userForm: Form[User], errorMessage: String)
+@import helper._
+
+@main("Login"){
+	<h1>Welcome to MADS TO-DO List</h1>
+
+	<h2>Login</h2>
+
+	<p style="color: red;">@errorMessage</p>
+
+	@form(routes.Application.doLogin){
+		@inputText(userForm("email"))
+		@inputPassword(userForm("password"))
+		<input type="submit" value="Login">
+	}
+	<a href="@routes.Application.showSigninForm"><button>Sign in new user</button></a>
+	<footer>Created by: Pablo Verdú Romero.</footer>
+}

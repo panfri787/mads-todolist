@@ -1,0 +1,22 @@
+@(taskForm: Form[Task], userEmail: String)
+
+@import helper._
+
+@main("Create new Task"){
+
+	<h1>Add a new task </h1>
+	<h2>Hello, @userEmail</h2>
+
+	@form(routes.Application.newTask){
+		@inputText(taskForm("label"))
+
+		@inputText(taskForm("endDate"), '_label -> "Date of end")
+
+		<input type="hidden" name="user" value="@userEmail"> 
+
+		<input type="submit" value="Create">
+	}
+	<footer>Created by: Pablo Verdú Romero.</footer>
+
+}
+

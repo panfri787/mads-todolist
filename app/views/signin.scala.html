@@ -1,0 +1,17 @@
+@(userForm : Form[User])
+
+@import helper._
+
+@main("Sign new user"){
+	<h1>Sign new user</h1>
+
+	@form(routes.Application.signNewUser){
+		@inputText(userForm("email"))
+
+		@inputPassword(userForm("password"))
+
+		<input type="submit" value="Sign in">
+	}
+	<a href="@routes.Application.showLoginForm"> <button>Back</button></a>
+	<footer>Created by: Pablo Verdú Romero.</footer>
+}

@@ -1,0 +1,55 @@
+@(tasks: List[Task], userEmail: String)
+
+@import helper._
+
+@main("Todo list"){
+
+	<h1>@tasks.size task(s)</h1>
+    <h2>Hello, @userEmail</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @tasks.map { task =>
+                <tr>
+                    <td>
+                        @task.label
+                    </td>
+
+                    <td>
+                        @task.endDate.map(_.format("dd/MM/yyyy"))
+                    </td>
+
+                    <td>
+                        @form(routes.Application.deleteTask(task.id.get)) {
+                            <input type="submit" value="Delete">
+                        }
+
+                        <a href="@routes.Application.editTask(task.id.get)"> <button>Edit</button> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <a href="@routes.Application.showNewTaskForm"> <button>Create new task</button> </a>
+    
+    @if(Application.order == Some(1)){
+        <a href="@routes.Application.tasks(None)">Sort by creation date</a>
+    }else{
+        <a href="@routes.Application.tasks(Some(1))">Sort by end date</a>
+    }
+
+    <div>
+        <a href="@routes.Application.logout"> <button>Logout</button> </a>
+    </div>
+
+    <footer>Created by: Pablo Verdú Romero.</footer>                                             
+}
