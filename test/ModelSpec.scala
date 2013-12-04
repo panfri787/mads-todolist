@@ -116,6 +116,26 @@ class ModelSpec() extends Specification {
 				notCorrect2 must not be equalTo (Task.listByUser("pepe@ua.es", Some(1)))
 			}
 		}
+
+		"update a task" in {
+			running(FakeApplication(additionalConfiguration = inMemoryDatabase())){
+				val task = Task.findById(1)
+				Task.update(1, new Task(anorm.NotAssigned, "Tarea modificada", None, "pepe@ua.es"))
+				val task_m = Task.findById(1)
+
+				task.get must not be equalTo(task_m.get)
+				task_m.get.label must be equalTo("Tarea modificada")
+				task_m.get.endDate must be equalTo(None)
+				task_m.get.user must be equalTo("pepe@ua.es")
+			}
+		}
+
+		"tell if one task is owner by one user or not" in {
+			running(FakeApplication()){
+				Task.isOwner(1, "pepe@ua.es") must beTrue
+				Task.isOwner(2, "pericoeldelospalotes@ua.es") must beFalse
+			}
+		}
 	}
 	
 }
