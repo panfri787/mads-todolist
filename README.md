@@ -1,3 +1,31 @@
+## Corrección de la práctica
+
+VERDU ROMERO, PABLO
+
+[Bitbucket](https://bitbucket.org/pvr3/mads-todolist-p4)
+
+### Documentación
+
+- Algo escasa la documentación
+
+### Código e implementación
+
+- Bien los tests de los controladores
+- Los tests de ordenación de tareas deberían implementarse con un bucle que compruebe que las fechas (o el Id) estén ordenadas
+- El test de borrar estaría mejor comprobarlo haciendo un `find` y no encontrándola
+
+
+### Calificación
+
+Algo mejorable la documentación y los tests del modelo
+
+Calificación: **0,45**
+
+7 de enero de 2014  
+Domingo Gallardo
+
+------
+
 #Practica 4 - Pruebas en Play Framework
 ##Alumno: Pablo Verdú Romero
 
