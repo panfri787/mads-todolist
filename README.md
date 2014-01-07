@@ -17,7 +17,7 @@ VERDU ROMERO, PABLO
 
 ### Calificación
 
-Algo mejorable la documentación y los tests del modelo
+Algo mejorable la documentación y los tests del modelo. Buen trabajo todo lo demás.
 
 Calificación: **0,45**
 
